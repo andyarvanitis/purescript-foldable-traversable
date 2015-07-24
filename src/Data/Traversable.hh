@@ -34,8 +34,8 @@ namespace Data_Traversable {
     return [=](fn<fn<A,B>,fn<M<A>,M<B>>> map) {
       return [=](fn<A,M<A>> pure) {
         return [=](fn<A,M<B>> f) {
-          return [=](list<A> array) {
-            return list<B>();
+          return [=](array<A> array) {
+            return array<B>();
           };
         };
       };
