@@ -25,7 +25,7 @@ namespace Data_Traversable {
   //               ((a -> b) -> m a -> m b) -> map
   //               (a -> m a) -> pure
   //               (a -> m b) -> f
-  //               Array a -> array
+  //               Array a -> xs
   //               m (Array b)
 
   // STUB!!!
@@ -34,7 +34,7 @@ namespace Data_Traversable {
     return [=](fn<fn<A,B>,fn<M<A>,M<B>>> map) {
       return [=](fn<A,M<A>> pure) {
         return [=](fn<A,M<B>> f) {
-          return [=](array<A> array) {
+          return [=](array<A> xs) {
             return array<B>();
           };
         };
