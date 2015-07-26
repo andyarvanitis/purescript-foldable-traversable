@@ -30,11 +30,11 @@ namespace Data_Traversable {
 
   // STUB!!!
   template <typename A, typename B, template <typename _M1> class M>
-  auto traverseArrayImpl(fn<M<fn<A,B>>,fn<M<A>,M<B>>> apply) {
-    return [=](fn<fn<A,B>,fn<M<A>,M<B>>> map) {
-      return [=](fn<A,M<A>> pure) {
-        return [=](fn<A,M<B>> f) {
-          return [=](array<A> xs) {
+  auto traverseArrayImpl(const fn<M<fn<A,B>>,fn<M<A>,M<B>>>& apply) {
+    return [=](const fn<fn<A,B>,fn<M<A>,M<B>>>& map) {
+      return [=](const fn<A,M<A>>& pure) {
+        return [=](const fn<A,M<B>>& f) {
+          return [=](const array<A>& xs) {
             return array<B>();
           };
         };

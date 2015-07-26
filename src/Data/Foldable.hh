@@ -22,9 +22,9 @@ namespace Data_Foldable {
   using namespace PureScript;
 
   template <typename A, typename B>
-  auto foldrArray(fn<A,fn<B,B>> f) -> fn<B,fn<array<A>,B>> {
-    return [=](B z) {
-      return [=](array<A> xs) {
+  auto foldrArray(const fn<A,fn<B,B>>& f) -> fn<B,fn<array<A>,B>> {
+    return [=](param<B> z) {
+      return [=](const array<A>& xs) {
         auto acc = z;
         for (typename array<A>::const_iterator xit = xs.begin(); xit != xs.end() ;++xit) {
           acc = f(*xit)(acc);
@@ -35,9 +35,9 @@ namespace Data_Foldable {
   }
 
   template <typename A, typename B>
-  auto foldlArray(fn<B,fn<A,B>> f) -> fn<B,fn<array<A>,B>> {
-    return [=](B z) {
-      return [=](array<A> xs) {
+  auto foldlArray(const fn<B,fn<A,B>>& f) -> fn<B,fn<array<A>,B>> {
+    return [=](param<B> z) {
+      return [=](const array<A>& xs) {
         auto acc = z;
         for (typename array<A>::const_iterator xit = xs.begin(); xit != xs.end() ;++xit) {
           acc = f(acc)(*xit);
