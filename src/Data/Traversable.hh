@@ -15,7 +15,7 @@
 #ifndef Data_TraversableFFI_HH
 #define Data_TraversableFFI_HH
 
-#include "Purescript/Purescript.hh"
+#include "PureScript/PureScript.hh"
 
 namespace Data_Traversable {
 

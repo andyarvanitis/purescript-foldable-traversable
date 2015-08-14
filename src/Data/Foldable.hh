@@ -15,7 +15,7 @@
 #ifndef Data_FoldableFFI_HH
 #define Data_FoldableFFI_HH
 
-#include "Purescript/Purescript.hh"
+#include "PureScript/PureScript.hh"
 
 namespace Data_Foldable {
 
