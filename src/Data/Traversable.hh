@@ -30,7 +30,7 @@ namespace Data_Traversable {
   //                    m (Array b)
 
   // STUB!!!
-  auto traverseArrayImpl(const any& apply) -> any {
+  inline auto traverseArrayImpl(const any& apply) -> any {
     return [=](const any& map) -> any {
       return [=](const any& pure) -> any {
         return [=](const any& f) -> any {

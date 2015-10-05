@@ -21,7 +21,7 @@ namespace Data_Foldable {
 
   using namespace PureScript;
 
-  auto foldrArray(const any& f) -> any {
+  inline auto foldrArray(const any& f) -> any {
     return [=](const any& z) -> any {
       return [=](const any& xs_) -> any {
         auto xs = xs_.cast<any::vector>();
@@ -34,7 +34,7 @@ namespace Data_Foldable {
     };
   }
 
-  auto foldlArray(const any& f) -> any {
+  inline auto foldlArray(const any& f) -> any {
     return [=](const any& z) -> any {
       return [=](const any& xs_) -> any {
         auto xs = xs_.cast<any::vector>();
