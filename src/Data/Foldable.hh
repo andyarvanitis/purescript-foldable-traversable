@@ -21,12 +21,12 @@ namespace Data_Foldable {
 
   using namespace PureScript;
 
-  template <typename A, typename B>
-  auto foldrArray(const fn<A,fn<B,B>>& f) -> fn<B,fn<array<A>,B>> {
-    return [=](param<B> z) {
-      return [=](const array<A>& xs) {
-        auto acc = z;
-        for (typename array<A>::const_iterator xit = xs.begin(); xit != xs.end() ;++xit) {
+  auto foldrArray(const any& f) -> any {
+    return [=](const any& z) -> any {
+      return [=](const any& xs_) -> any {
+        auto xs = xs_.cast<any::vector>();
+        auto acc = z.cast<any::vector>();
+        for (typename any::vector::const_iterator xit = xs.begin(); xit != xs.end() ;++xit) {
           acc = f(*xit)(acc);
         }
         return acc;
@@ -34,12 +34,12 @@ namespace Data_Foldable {
     };
   }
 
-  template <typename A, typename B>
-  auto foldlArray(const fn<B,fn<A,B>>& f) -> fn<B,fn<array<A>,B>> {
-    return [=](param<B> z) {
-      return [=](const array<A>& xs) {
-        auto acc = z;
-        for (typename array<A>::const_iterator xit = xs.begin(); xit != xs.end() ;++xit) {
+  auto foldlArray(const any& f) -> any {
+    return [=](const any& z) -> any {
+      return [=](const any& xs_) -> any {
+        auto xs = xs_.cast<any::vector>();
+        auto acc = z.cast<any::vector>();
+        for (typename any::vector::const_iterator xit = xs.begin(); xit != xs.end() ;++xit) {
           acc = f(acc)(*xit);
         }
         return acc;
