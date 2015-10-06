@@ -35,6 +35,7 @@ namespace Data_Traversable {
       return [=](const any& pure) -> any {
         return [=](const any& f) -> any {
           return [=](const any& xs) -> any {
+            assert(false && "Not implemented yet");
             return any::vector();
           };
         };
