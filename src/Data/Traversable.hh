@@ -21,27 +21,8 @@ namespace Data_Traversable {
 
   using namespace PureScript;
 
-  // foreign import traverseArrayImpl
-  //   :: forall m a b. (m (a -> b) -> m a -> m b) ->
-  //                    ((a -> b) -> m a -> m b) ->
-  //                    (a -> m a) ->
-  //                    (a -> m b) ->
-  //                    Array a ->
-  //                    m (Array b)
+  auto traverseArrayImpl(const any&) -> any;
 
-  // STUB!!!
-  inline auto traverseArrayImpl(const any& apply) -> any {
-    return [=](const any& map) -> any {
-      return [=](const any& pure) -> any {
-        return [=](const any& f) -> any {
-          return [=](const any& xs) -> any {
-            assert(false && "Not implemented yet");
-            return any::vector();
-          };
-        };
-      };
-    };
-  }
 }
 
 #endif // Data_TraversableFFI_HH
