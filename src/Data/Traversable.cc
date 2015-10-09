@@ -29,14 +29,14 @@ namespace Data_Traversable {
 
   static auto go(const any& acc,
                  const size_t currentLen,
-                 const any::vector& xs,
+                 const any& xs,
                  const any& buildFrom) -> any::map {
 
     if (currentLen == 0) {
       return any::map{ { KEY("acc"), acc } };
     } else {
       const auto last = xs[currentLen - 1];
-      const auto fn = [=, &xs]() -> any {
+      const auto fn = [=]() -> any {
         return go(buildFrom(last)(acc), currentLen - 1, xs, buildFrom);
       };
       return any::map{ { KEY("fn"), fn } };
@@ -52,9 +52,8 @@ namespace Data_Traversable {
               return apply(map(consList)(f(x)))(ys);
             };
           };
-          return [=](const any& array_) -> any {
-            const auto& array = array_.cast<any::vector>();
-            any result = go(pure(emptyList()), array.size(), array, buildFrom);
+          return [=](const any& array) -> any {
+            any result = go(pure(emptyList()), array.cast<any::vector>().size(), array, buildFrom);
             while (result.cast<any::map>().count(KEY("fn")) > 0) {
               any fn = result[KEY("fn")];
               result = fn();
